@@ -5,4 +5,16 @@ chmod +x astra > /dev/null
 sudo mv astra /usr/bin/ > /dev/null
 sudo mkdir /etc/astra > /dev/null
 echo "Sa instalat cu succes..."
+echo "Sa porneste Astra (Port 5555)"
+
+function AddRCLocal() {
+    shell_exec("sed --in-place '/exit 0/d' /etc/rc.local");
+    $astra_bin = shell_exec("cat /etc/rc.local | grep -v grep | grep -c 'astra'");
+    if ($nginx_bin == 0) {
+        shell_exec("echo 'astra -c /etc/astra/iptv.conf -p 5555' >> /etc/rc.local");
+    }
+    
+    shell_exec("echo 'sleep 10' >> /etc/rc.local");
+    shell_exec("echo 'exit 0' >> /etc/rc.local");
+}
 fi
