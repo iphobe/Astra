@@ -8,4 +8,3 @@ echo "Sa instalat cu succes..."
 echo "Se porneste Astra (Port 5555)"
 echo "astra -c /etc/astra/iptv.conf -p 5555"
 
-fi
